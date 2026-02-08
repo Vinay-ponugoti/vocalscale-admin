@@ -9,7 +9,7 @@ interface SubscriptionsFilters {
 }
 
 export function useSubscriptions(filters: SubscriptionsFilters = {}) {
-  const { page = 1, pageSize = 10, status, search } = filters
+  const { page = 1, pageSize = 10, status } = filters
 
   return useQuery({
     queryKey: ['subscriptions', filters],
