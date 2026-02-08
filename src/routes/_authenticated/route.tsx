@@ -1,8 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { AuthenticatedLayout } from '@/components/layout/authenticated-layout'
-import { SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
-import { useAuth } from '@clerk/clerk-react' // Added useAuth import
-import { useAuth } from '@clerk/clerk-react'
+import { useAuth, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
 
 const ProtectedLayout = () => {
   const { isLoaded, isSignedIn } = useAuth()
