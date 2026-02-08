@@ -6,14 +6,18 @@ const userStatusSchema = z.union([
   z.literal('trialing'),
   z.literal('canceled'),
   z.literal('past_due'),
+  z.literal('invited'),
+  z.literal('suspended'),
 ])
 export type UserStatus = z.infer<typeof userStatusSchema>
 
 const userSchema = z.object({
   id: z.string(),
   fullName: z.string(),
+  username: z.string().optional(),
   email: z.string(),
   phone: z.string(),
+  role: z.string().optional(),
   avatarUrl: z.string().optional(),
   businessName: z.string(),
   subscriptionStatus: z.string(),

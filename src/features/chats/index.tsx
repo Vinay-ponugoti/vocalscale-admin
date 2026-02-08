@@ -233,7 +233,7 @@ export function Chats() {
                       {currentMessage &&
                         Object.keys(currentMessage).map((key) => (
                           <Fragment key={key}>
-                            {currentMessage[key].map((msg, index) => (
+                            {currentMessage[key].map((msg: Convo, index: number) => (
                               <div
                                 key={`${msg.sender}-${msg.timestamp}-${index}`}
                                 className={cn(

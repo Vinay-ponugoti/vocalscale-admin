@@ -85,8 +85,10 @@ export function useUsers(filters: UsersFilters = {}) {
         return {
           id: profile.id,
           fullName: profile.full_name || 'N/A',
+          username: profile.email?.split('@')[0] || profile.id.slice(0, 8),
           email: profile.email || 'N/A',
           phone: profile.contact_phone || '',
+          role: profile.role || 'user',
           avatarUrl: profile.avatar_url || '',
           businessName: business?.business_name || profile.business_name || 'No business',
           subscriptionStatus: subscription?.status || business?.subscription_status || 'inactive',
