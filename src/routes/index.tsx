@@ -21,7 +21,9 @@ function LandingPage() {
 
   // Redirect to dashboard if already authenticated
   useEffect(() => {
+    console.log('Landing Page Auth State:', { isLoaded, isSignedIn })
     if (isLoaded && isSignedIn) {
+      console.log('Redirecting to dashboard...')
       navigate({ to: '/dashboard' })
     }
   }, [isSignedIn, isLoaded, navigate])

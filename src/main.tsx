@@ -62,7 +62,6 @@ const queryClient = new QueryClient({
           toast.error('Session expired!')
           useAuthStore.getState().auth.reset()
 
-          // Redirect logic might need adaptation for Clerk, but keeping for now as backup/hybrid
           // router.navigate({ to: '/sign-in', search: { redirect } })
         }
         if (error.response?.status === 500) {
@@ -106,6 +105,8 @@ if (!rootElement.innerHTML) {
         afterSignOutUrl="/"
         signInUrl="/sign-in"
         signUpUrl="/sign-up"
+        signInFallbackRedirectUrl="/dashboard"
+        signUpFallbackRedirectUrl="/dashboard"
       >
         <QueryClientProvider client={queryClient}>
           <ThemeProvider>
