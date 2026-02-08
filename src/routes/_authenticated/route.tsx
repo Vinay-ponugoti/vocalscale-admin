@@ -1,26 +1,30 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { useEffect } from 'react'
+import { useAuth } from '@clerk/clerk-react'
 import { AuthenticatedLayout } from '@/components/layout/authenticated-layout'
-import { useAuth, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
 
 const ProtectedLayout = () => {
   const { isLoaded, isSignedIn } = useAuth()
-  console.log('ProtectedLayout State:', { isLoaded, isSignedIn })
+  const navigate = useNavigate()
 
-  if (!isLoaded) return null
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) {
+      // Redirect to sign-in if not authenticated
+      navigate({ to: '/sign-in' })
+    }
+  }, [isLoaded, isSignedIn, navigate])
 
-  return (
-    <>
-      <SignedIn>
-        <AuthenticatedLayout />
-      </SignedIn>
-      <SignedOut>
-        <RedirectToSignIn />
-      </SignedOut>
-    </>
-  )
+  if (!isLoaded || !isSignedIn) {
+    return (
+      <div className='min-h-screen flex items-center justify-center'>
+        <div className='animate-spin rounded-full h-8 w-8 border-b-2 border-primary'></div>
+      </div>
+    )
+  }
+
+  return <AuthenticatedLayout />
 }
 
 export const Route = createFileRoute('/_authenticated')({
   component: ProtectedLayout,
 })
-

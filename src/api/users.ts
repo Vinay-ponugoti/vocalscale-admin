@@ -205,11 +205,16 @@ export function useUserEmails() {
   return useQuery({
     queryKey: ['user-emails'],
     queryFn: async () => {
-      const { data, error } = await supabase.auth.admin.listUsers()
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('id, email')
+
       if (error) throw error
       const emailMap: Record<string, string> = {}
-      for (const user of data.users) {
-        emailMap[user.id] = user.email || ''
+      if (data) {
+        for (const profile of data) {
+          emailMap[profile.id] = profile.email || ''
+        }
       }
       return emailMap
     },
