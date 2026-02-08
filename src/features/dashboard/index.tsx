@@ -7,7 +7,6 @@ import {
 import {
   Card,
   CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
@@ -21,7 +20,6 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { useDashboardStats } from '@/api/dashboard'
 import { formatCurrency } from '@/lib/formatters'
 import { Overview } from './components/overview'
-import { RecentCalls } from './components/recent-calls'
 
 export function Dashboard() {
   const { data: stats, isLoading } = useDashboardStats()
@@ -145,24 +143,13 @@ export function Dashboard() {
                 </CardContent>
               </Card>
             </div>
-            <div className='grid grid-cols-1 gap-4 lg:grid-cols-7'>
-              <Card className='col-span-1 lg:col-span-4'>
+            <div className='grid grid-cols-1 gap-4'>
+              <Card className='col-span-1'>
                 <CardHeader>
                   <CardTitle>Calls Overview</CardTitle>
                 </CardHeader>
                 <CardContent className='ps-2'>
                   <Overview />
-                </CardContent>
-              </Card>
-              <Card className='col-span-1 lg:col-span-3'>
-                <CardHeader>
-                  <CardTitle>Recent Calls</CardTitle>
-                  <CardDescription>
-                    Latest calls across all businesses
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <RecentCalls />
                 </CardContent>
               </Card>
             </div>

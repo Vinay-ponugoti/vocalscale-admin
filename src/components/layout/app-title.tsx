@@ -19,14 +19,23 @@ export function AppTitle() {
           className='gap-0 py-0 hover:bg-transparent active:bg-transparent'
           asChild
         >
-          <div>
+          <div className='flex items-center gap-3'>
             <Link
               to='/'
               onClick={() => setOpenMobile(false)}
-              className='grid flex-1 text-start text-sm leading-tight'
+              className='flex items-center gap-2 text-start text-sm leading-tight'
             >
-              <span className='truncate font-bold'>Shadcn-Admin</span>
-              <span className='truncate text-xs'>Vite + ShadcnUI</span>
+              <div className='flex h-8 w-8 items-center justify-center rounded-lg overflow-hidden bg-muted'>
+                <img
+                  src='/images/favicon.png'
+                  alt='Logo'
+                  className='h-full w-full object-contain p-1'
+                />
+              </div>
+              <div className='grid flex-1 overflow-hidden'>
+                <span className='truncate font-bold'>VocalScale Admin</span>
+                <span className='truncate text-xs'>Internal Portal</span>
+              </div>
             </Link>
             <ToggleSidebar />
           </div>
