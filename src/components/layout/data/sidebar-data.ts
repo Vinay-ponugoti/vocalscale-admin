@@ -4,6 +4,7 @@ import {
   Users,
   LifeBuoy,
   Settings,
+  FileText,
 } from 'lucide-react'
 
 import { type SidebarData } from '../types'
@@ -32,6 +33,11 @@ export const sidebarData: SidebarData = {
           title: 'Support',
           url: '/support',
           icon: LifeBuoy,
+        },
+        {
+          title: 'Knowledge Base',
+          url: '/knowledge',
+          icon: FileText,
         },
         {
           title: 'Settings',

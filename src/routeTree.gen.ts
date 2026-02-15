@@ -14,6 +14,7 @@ import { Route as SignInRouteImport } from './routes/sign-in'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedSupportRouteImport } from './routes/_authenticated/support'
+import { Route as AuthenticatedKnowledgeRouteImport } from './routes/_authenticated/knowledge'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as errors503RouteImport } from './routes/(errors)/503'
 import { Route as errors500RouteImport } from './routes/(errors)/500'
@@ -57,6 +58,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthenticatedSupportRoute = AuthenticatedSupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedKnowledgeRoute = AuthenticatedKnowledgeRouteImport.update({
+  id: '/knowledge',
+  path: '/knowledge',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
@@ -182,6 +188,7 @@ export interface FileRoutesByFullPath {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/knowledge': typeof AuthenticatedKnowledgeRoute
   '/support': typeof AuthenticatedSupportRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -207,6 +214,7 @@ export interface FileRoutesByTo {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/dashboard': typeof AuthenticatedDashboardRoute
+  '/knowledge': typeof AuthenticatedKnowledgeRoute
   '/support': typeof AuthenticatedSupportRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -235,6 +243,7 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/knowledge': typeof AuthenticatedKnowledgeRoute
   '/_authenticated/support': typeof AuthenticatedSupportRoute
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
@@ -263,6 +272,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/dashboard'
+    | '/knowledge'
     | '/support'
     | '/errors/$error'
     | '/settings/account'
@@ -288,6 +298,7 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/dashboard'
+    | '/knowledge'
     | '/support'
     | '/errors/$error'
     | '/settings/account'
@@ -315,6 +326,7 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/dashboard'
+    | '/_authenticated/knowledge'
     | '/_authenticated/support'
     | '/_authenticated/errors/$error'
     | '/_authenticated/settings/account'
@@ -378,6 +390,13 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof AuthenticatedSupportRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/knowledge': {
+      id: '/_authenticated/knowledge'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof AuthenticatedKnowledgeRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/dashboard': {
@@ -558,6 +577,7 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedKnowledgeRoute: typeof AuthenticatedKnowledgeRoute
   AuthenticatedSupportRoute: typeof AuthenticatedSupportRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
   AuthenticatedChatsIndexRoute: typeof AuthenticatedChatsIndexRoute
@@ -568,6 +588,7 @@ interface AuthenticatedRouteRouteChildren {
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedKnowledgeRoute: AuthenticatedKnowledgeRoute,
   AuthenticatedSupportRoute: AuthenticatedSupportRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
   AuthenticatedChatsIndexRoute: AuthenticatedChatsIndexRoute,
