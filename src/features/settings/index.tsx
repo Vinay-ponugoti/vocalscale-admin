@@ -1,5 +1,16 @@
 import { Outlet } from '@tanstack/react-router'
-import { Monitor, Bell, Palette, Wrench, UserCog } from 'lucide-react'
+import {
+  Monitor,
+  Bell,
+  Palette,
+  Wrench,
+  UserCog,
+  Bot,
+  BookOpen,
+  Shield,
+  Server,
+  Users,
+} from 'lucide-react'
 import { Separator } from '@/components/ui/separator'
 import { ConfigDrawer } from '@/components/config-drawer'
 import { Header } from '@/components/layout/header'
@@ -35,12 +46,31 @@ const sidebarNavItems = [
     href: '/settings/display',
     icon: <Monitor size={18} />,
   },
+  {
+    title: 'Support Bot',
+    href: '/settings/support-bot',
+    icon: <Bot size={18} />,
+  },
+  {
+    title: 'Knowledge Base',
+    href: '/settings/knowledge-base',
+    icon: <BookOpen size={18} />,
+  },
+  {
+    title: 'System & API',
+    href: '/settings/system',
+    icon: <Server size={18} />,
+  },
+  {
+    title: 'User Management',
+    href: '/settings/users',
+    icon: <Users size={18} />,
+  },
 ]
 
 export function Settings() {
   return (
     <>
-      {/* ===== Top Heading ===== */}
       <Header>
         <Search />
         <div className='ms-auto flex items-center space-x-4'>
@@ -56,7 +86,7 @@ export function Settings() {
             Settings
           </h1>
           <p className='text-muted-foreground'>
-            Manage your account settings and set e-mail preferences.
+            Manage your admin panel, support bot, knowledge base, and system configuration.
           </p>
         </div>
         <Separator className='my-4 lg:my-6' />

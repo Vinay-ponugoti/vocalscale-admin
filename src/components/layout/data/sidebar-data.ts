@@ -1,8 +1,9 @@
 import {
   LayoutDashboard,
-
   MessagesSquare,
   Users,
+  LifeBuoy,
+  Settings,
 } from 'lucide-react'
 
 import { type SidebarData } from '../types'
@@ -17,7 +18,6 @@ export const sidebarData: SidebarData = {
           url: '/',
           icon: LayoutDashboard,
         },
-
         {
           title: 'Chats',
           url: '/chats',
@@ -28,9 +28,17 @@ export const sidebarData: SidebarData = {
           url: '/users',
           icon: Users,
         },
-
+        {
+          title: 'Support',
+          url: '/support',
+          icon: LifeBuoy,
+        },
+        {
+          title: 'Settings',
+          url: '/settings',
+          icon: Settings,
+        },
       ],
     },
-
   ],
 }
